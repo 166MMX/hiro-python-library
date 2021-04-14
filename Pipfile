@@ -1,0 +1,35 @@
+[[source]]
+url = 'https://pypi.python.org/simple'
+verify_ssl = true
+name = 'pypi'
+
+[packages]
+cuid = '>= 0.3'
+requests = '>= 2.25'
+requests-toolbelt = '>= 0.9.1'
+ijson = '>= 3.1.3'
+websockets = '>= 8.1'
+# PyYAML
+# docopt
+
+[dev-packages]
+setuptools = '>=30.3.0'  # build
+setuptools_scm = '>=3.'  # version
+wheel = '*'  # build
+pep517 = '*'  # build
+twine = '*'  # publish
+pytest = '*'  # PyCharm - test
+yappi = '*'  # PyCharm - profiler
+coverage = '*'  # PyCharm - coverage
+# line-profiler = '*'  # profiler
+# mypy = '*'  # type hint check
+# pipdeptree = '*'  # dependency insights
+
+# hamcrest
+# more_itertools
+# nimoy
+# nimoy_framework
+# PyHamcrest
+
+[requires]
+python_version = '3.9'

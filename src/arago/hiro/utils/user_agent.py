@@ -5,7 +5,7 @@ from requests_toolbelt.utils import user_agent
 import arago.hiro as hiro
 
 
-def build_user_agent(name:str) -> str:
+def build_user_agent(name: str) -> str:
     return user_agent.UserAgentBuilder(
         name=name,
         version=hiro.__version__,

@@ -1,7 +1,8 @@
 # HIRO Python SDK
+
 This SDK provides:
 
-* Endpoint probes for HIRO 5, HIRO 6 and HIRO 7   
+* Endpoint probes for HIRO 5, HIRO 6 and HIRO 7
 * Backend framework for HIRO 5, HIRO 6 and HIRO 7 implementations
 * Frontend framework that passes calls seamlessly to the proper backend implementation
 * Layers
@@ -15,53 +16,55 @@ This SDK provides:
     * Storage (time series, blob)
     * OGIT (generated immutable ontology objects) implemented as enum with ontology instances as its values
 
-The main focus is on HIRO 6 and HIRO 7 and end user API. HIRO 5 and admin user API have been considered but prioritised as low priority for now.
+The main focus is on HIRO 6 and HIRO 7 and end user API. HIRO 5 and admin user API have been considered but prioritised
+as low priority for now.
 
 ## Terminology
 
 * **Ontology**  
-Is like a schema or class definition for the graph, it describes how instances or objects will be shaped within the graph.
+  Is like a schema or class definition for the graph, it describes how instances or objects will be shaped within the
+  graph.
 * **Entity**  
-Is like class and is used as a blueprint and validation schema for a vertex instance within a graph.
+  Is like class and is used as a blueprint and validation schema for a vertex instance within a graph.
 * **Attribute (entity)**  
-Is like a property, field or variable that can be associate with an entity.
+  Is like a property, field or variable that can be associate with an entity.
 * **Verb**  
-Is used to describe possible connection types between entities.
+  Is used to describe possible connection types between entities.
 * **OGIT**  
-Using the basic building blocks of an Ontology. Declaring a concrete entities, attributes and verbs.
+  Using the basic building blocks of an Ontology. Declaring a concrete entities, attributes and verbs.
 * **Vertex**  
-Is an instance of an entity within the graph. It can store data or represent something else like a storage location.
+  Is an instance of an entity within the graph. It can store data or represent something else like a storage location.
 * **Attribute (vertex)**  
-Is an instance of an entity attribute within the graph.
+  Is an instance of an entity attribute within the graph.
 * **Edge**  
-Is an instance of a verb and creating a connection between to vertices. HIRO does not support attributes for edges.
+  Is an instance of a verb and creating a connection between to vertices. HIRO does not support attributes for edges.
 * **Graph**  
-The persistent storage location for vertices and edges.
+  The persistent storage location for vertices and edges.
 * **Engine**  
-Processes automation issues stored within the graph.
+  Processes automation issues stored within the graph.
 * **Variable (engine)**  
-Maps to a vertex attributes value, free vertex attribute value or just volatile runtime variable value.
+  Maps to a vertex attributes value, free vertex attribute value or just volatile runtime variable value.
 * **Automation Issue**  
-a.k.a. Issue or Task
+  a.k.a. Issue or Task
 
 ## Goal
 
 * tries to merge
-  - python graphit
-    - https://github.com/arago/graphit-tool
-      - https://github.com/arago/graphit-tool/blob/master/graphit.py#L20
-  - python integration tests
-    - https://github.com/arago/hiro-integration-tests/blob/master/python/main/pylib
-    - https://github.com/arago/hiro-release-management/blob/master/pylib/HIRO
-  - java hiro cli
-    - https://github.com/arago/hiro-clients/tree/master/java
-    - https://github.com/arago/hiro-clients/tree/master/python
-    - https://docs.hiro.arago.co/hiro/6.2.0/admin/hiro-cli/overview.html
-    - https://docs.hiro.arago.co/hiro/5.4.5/hiro-cli-new/overview.html
-    - https://docs.hiro.arago.co/hiro/5.4.5/hiro-cli/overview.html
-  - full api support
-    - https://pod1159.saasarago.com/_api/index.html
-    - https://core.arago.co/help/
+    - python graphit
+        - https://github.com/arago/graphit-tool
+            - https://github.com/arago/graphit-tool/blob/master/graphit.py#L20
+    - python integration tests
+        - https://github.com/arago/hiro-integration-tests/blob/master/python/main/pylib
+        - https://github.com/arago/hiro-release-management/blob/master/pylib/HIRO
+    - java hiro cli
+        - https://github.com/arago/hiro-clients/tree/master/java
+        - https://github.com/arago/hiro-clients/tree/master/python
+        - https://docs.hiro.arago.co/hiro/6.2.0/admin/hiro-cli/overview.html
+        - https://docs.hiro.arago.co/hiro/5.4.5/hiro-cli-new/overview.html
+        - https://docs.hiro.arago.co/hiro/5.4.5/hiro-cli/overview.html
+    - full api support
+        - https://pod1159.saasarago.com/_api/index.html
+        - https://core.arago.co/help/
 
 ## Known issues and limitations
 
@@ -69,10 +72,10 @@ a.k.a. Issue or Task
 * does not handle GraphIT HTTP Status Code 888 Transaction rollback
 * retry for streaming post requests not yet implemented - api change
 * does not implement undocumented features in HIRO 6 like:
-  - listMeta
-  - includeDeleted
-  - order by multiple fields
-  - contentType for storage
+    - listMeta
+    - includeDeleted
+    - order by multiple fields
+    - contentType for storage
 * does not optionally warn about missing ogit/_owner attribute
 * missing escape function for elastic search queries
 
@@ -89,8 +92,8 @@ a.k.a. Issue or Task
 * provide HTTP debug messages with curl command
 * provide structured API access
 * support graphit/engine lists
-* support web socket events stream 
-* support connectit/doapi 
+* support web socket events stream
+* support connectit/doapi
 
 ## API layers
 
@@ -138,12 +141,12 @@ a.k.a. Issue or Task
         - create
         - delete
     - vertex
-        - create 
+        - create
         - get
         - update
         - delete
         - history
-          
+
         - attribute (jcli; layer 5)
         - connect (jcli; layer 5)
         - disconnect (jcli; layer 5)
@@ -245,7 +248,7 @@ a.k.a. Issue or Task
                 - Organization
                 - Domain
                 - Team
-                - DataSet            
+                - DataSet
         - backend
             - five
                 - Probe
@@ -342,8 +345,8 @@ a.k.a. Issue or Task
                     - App
                     - Auth
 
-
 ## References
+
 * Ontology
     * https://www.w3.org/TR/owl2-overview/
     * https://www.w3.org/TR/rdf-sparql-query/

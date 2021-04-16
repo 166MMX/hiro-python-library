@@ -19,6 +19,73 @@ This SDK provides:
 The main focus is on HIRO 6 and HIRO 7 and end user API. HIRO 5 and admin user API have been considered but prioritised
 as low priority for now.
 
+## Minimalistic examples
+
+### Create client
+
+```python3
+from arago.hiro.client.rest_base_client import HiroClient
+
+client = HiroClient.create_stringly(
+    endpoint='https://core.arago.co',
+    client_id='',
+    client_secret='',
+    username='',
+    password='')
+```
+
+```python3
+from arago.hiro.client.rest_base_client import HiroClient
+from arago.extension.requests import HiroConstantAuth
+from arago.hiro.model.auth import ConstantAccessToken
+
+client = HiroClient()
+client.configure('https://core.arago.co', HiroConstantAuth(ConstantAccessToken('')))
+```
+
+### Graph vertex CRUD
+
+```python3
+from arago.ogit import OgitEntity, OgitAttribute
+from arago.hiro.model.graph.vertex import Vertex, VertexId, ExternalVertexId
+from arago.hiro.model.graph.attribute import SystemAttribute, FreeAttribute
+from arago.hiro.client.rest_base_client import HiroClient
+
+client = HiroClient.create_stringly(
+    endpoint='https://core.arago.co',
+    client_id='',
+    client_secret='',
+    username='',
+    password='')
+
+vertex_1: Vertex = client.model.graph.vertex.create(vertex_type=OgitEntity.OGIT_NOTE)
+vertex_2: Vertex = client.model.graph.vertex.create(vertex_type='ogit/Note')
+vertex_3: Vertex = client.model.graph.vertex.create(vertex={'ogit/_type': 'ogit/Note'})
+vertex_4: Vertex = client.model.graph.vertex.create(vertex={(OgitAttribute.OGIT__TYPE): OgitEntity.OGIT_NOTE})
+vertex_5: Vertex = client.model.graph.vertex.create(vertex={(SystemAttribute.OGIT__TYPE): OgitEntity.OGIT_NOTE})
+
+updated_vertex_1: Vertex = client.model.graph.vertex.update(
+    vertex_id=vertex_1.id,
+    vertex={
+        (FreeAttribute(':foo')): 'bar'})
+updated_vertex_2: Vertex = client.model.graph.vertex.update(
+    vertex={
+        (SystemAttribute.OGIT__ID): vertex_2.id,
+        (SystemAttribute.OGIT__XID): 'special:id',
+        (FreeAttribute(':bar')): 'foo'})
+
+vertex_6: Vertex = client.model.graph.vertex.get(vertex_xid='special:id')
+vertex_7: Vertex = client.model.graph.vertex.get(vertex_id=ExternalVertexId('special:id'))
+assert vertex_6 == vertex_7
+vertex_2_id: VertexId = vertex_2.id
+vertex_8: Vertex = client.model.graph.vertex.get(vertex_id=vertex_2_id)
+assert vertex_6 == vertex_8
+
+deleted_vertex_1: Vertex = client.model.graph.vertex.delete(vertex_id=vertex_1.id)
+deleted_vertex_2: Vertex = client.model.graph.vertex.delete(vertex_xid='special:id')
+deleted_vertex_3: Vertex = client.model.graph.vertex.delete(vertex=vertex_3)
+```
+
 ## Terminology
 
 * **Ontology**  
